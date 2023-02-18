@@ -15,7 +15,7 @@ const filterOptionList = [
 
 const ControlMenu = ({value, onChange, optionList}) => {
     return (
-        <select value={value} onChange={(e) => {
+        <select className="ControlMenu" value={value} onChange={(e) => {
             onChange(e.target.value);
         }}>
             {optionList.map((it, idx) => (
@@ -27,7 +27,7 @@ const ControlMenu = ({value, onChange, optionList}) => {
     );
 };
 
-const DiaryList = ({diaryList}) => {
+const DiaryList = ({ diaryList }) => {
 
     const navigate = useNavigate();
 
@@ -45,7 +45,7 @@ const DiaryList = ({diaryList}) => {
         };
 
         const compare = (a, b) => {
-            if(sortType === 'latest') {
+            if(sortType === "latest") {
                 return parseInt(b.date) - parseInt(a.date);
             }
             else {
@@ -60,18 +60,24 @@ const DiaryList = ({diaryList}) => {
     }
     
     return (
-        <div>
-            <ControlMenu 
-                value={sortType}
-                onChange={setSortType}
-                optionList={sortOptionList}
-            />
-            <ControlMenu
-                value={filter}
-                onChange={setFilter}
-                optionList={filterOptionList}
-            />
-            <MyButton type={"positive"} text={"새 일기쓰기"} onClick={() => navigate("/new")}/>
+        <div className="DiaryList">
+            <div className="menu_wrapper">
+                <div className="left_col">
+                    <ControlMenu 
+                        value={sortType}
+                        onChange={setSortType}
+                        optionList={sortOptionList}
+                    />
+                    <ControlMenu
+                        value={filter}
+                        onChange={setFilter}
+                        optionList={filterOptionList}
+                    />
+                </div>
+                <div className="right_col">
+                    <MyButton type={"positive"} text={"새 일기쓰기"} onClick={() => navigate("/new")}/>
+                </div> 
+            </div>
             {getProcessedDiaryList().map((it) => (
                 <div key={it.id}>{it.content} {it.emotion}</div>
             ))}
