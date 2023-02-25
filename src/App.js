@@ -24,7 +24,8 @@ const reducer = (state, action) => {
       break;
     }
     case 'EDIT': {
-      newState = state.map((it) => (it.id === action.data.id ? {...action.data} : it))
+      newState = state.map((it) => (it.id === action.data.id ? { ...action.data } : it));
+      break;
     }
     default:
       return state;
