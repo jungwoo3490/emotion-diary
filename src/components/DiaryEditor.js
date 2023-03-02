@@ -6,6 +6,8 @@ import EmotionItem from "./EmotionItem";
 import MyButton from "./MyButton";
 import MyHeader from "./MyHeader";
 
+import { getStringDate } from "../util/date";
+
 const emotionList = [
     {
         emotion_id: 1,
@@ -33,10 +35,6 @@ const emotionList = [
         emotion_descript: "매우 나쁨"
     }
 ];
-
-const getStringDate = (date) => {
-    return date.toISOString().slice(0, 10);
-};
 
 const DiaryEditor = ({ isEdit, originData }) => {
 
